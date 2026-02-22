@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "762663973078",
+    "project_id": "direct-dispatch-2ac65",
+    "storage_bucket": "direct-dispatch-2ac65.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762663973078:android:9ac9e45f9c1cd0ae699977",
+        "android_client_info": {
+          "package_name": "com.yourcompany.direct_dispatch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN8gILbvVOIT-HkuIrQtK6v_BC9eW0X7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

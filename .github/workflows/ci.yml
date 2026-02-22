@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  flutter:
+    name: Flutter – Analyze & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.0'
+          channel: stable
+          cache: true
+
+      - name: Create CI .env
+        run: |
+          cat > .env << 'EOF'
+          FIREBASE_API_KEY=test_key
+          FIREBASE_APP_ID=1:000000000000:android:0000000000000000
+          FIREBASE_MESSAGING_SENDER_ID=000000000000
+          FIREBASE_PROJECT_ID=direct-dispatch-test
+          FIREBASE_STORAGE_BUCKET=direct-dispatch-test.appspot.com
+          API_BASE_URL=http://localhost:3000
+          EOF
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Code generation
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Analyze
+        run: flutter analyze --no-fatal-infos
+
+      - name: Unit tests
+        run: flutter test test/unit/
+
+      - name: Integration tests
+        run: flutter test test/integration/
