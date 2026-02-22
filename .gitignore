@@ -1,0 +1,9 @@
+.env
+*.g.dart
+*.freezed.dart
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+android/local.properties
+ios/Flutter/flutter_export_environment.sh
